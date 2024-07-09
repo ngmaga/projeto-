@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="stylesheet" href="/css/layout-vendedor.css">
+</head>
+<body>
+    <% layout('layout-vendedor') %>
+
+    <section class="product-list">
+        <% products.forEach(product => { %>
+            <div class="product-card">
+                <img src="<%= product.imageUrl %>" alt="<%= product.name %>">
+                <h2><%= product.name %></h2>
+                <p>Quantidade: <%= product.quantity %></p>
+                <p>Preço: R$<%= product.price %></p>
+                <a href="/products/edit/<%= product.id %>">Editar</a>
+                <form action="/products/delete/<%= product.id %>" method="POST" style="display:inline;">
+                    <button type="submit">Remover</button>
+                </form>
+            </div>
+        <% }) %>
+    </section>
+</body>
+</html>

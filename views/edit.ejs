@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATUALIZAÇÃO</title>
+</head>
+<body>
+    <% layout('layout-vendedor') %>
+
+    <section class="product-form">
+      <h2><%= product ? 'Editar Produto' : 'Adicionar Produto' %></h2>
+      <form action="<%= product ? '/products/edit/' + product.id : '/products/add' %>" method="POST" enctype="multipart/form-data">
+        <label for="name">Nome:</label>
+        <input type="text" id="name" name="name" value="<%= product ? product.name : '' %>" required>
+    
+        <label for="quantity">Quantidade:</label>
+        <input type="number" id="quantity" name="quantity" value="<%= product ? product.quantity : '' %>" required>
+    
+        <label for="price">Preço:</label>
+        <input type="number" id="price" name="price" step="0.01" value="<%= product ? product.price : '' %>" required>
+    
+        <label for="image">Imagem:</label>
+        <input type="file" id="image" name="image">
+    
+        <button type="submit"><%= product ? 'Atualizar' : 'Adicionar' %></button>
+      </form>
+    </section>
+    
+</body>
+</html>

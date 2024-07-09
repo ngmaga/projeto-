@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Usuários</title>
+    <link rel="stylesheet" href="/css/users.css">
+</head>
+<body>
+    <header>
+        <h1>Lista de Usuários</h1>
+    </header>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Função</th>
+                    <th>Ações</th> <!-- Coluna para botões de ação -->
+                </tr>
+            </thead>
+            <tbody>
+                <% users.forEach(user => { %>
+                    <tr>
+                        <td><%= user.name %></td>
+                        <td><%= user.email %></td>
+                        <td><%= user.role %></td>
+                        <td>
+                            <!-- Botões para ver histórico de compras e informações de contato -->
+                            <a href="/users/history/<%= user.id %>" class="btn btn-primary btn-sm">Histórico de Compras</a>
+                            <a href="/users/contact/<%= user.id %>" class="btn btn-info btn-sm">Informações de Contato</a>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

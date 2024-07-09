@@ -1,0 +1,61 @@
+<!-- cart.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras</title>
+    <link rel="stylesheet" href="/css/cart.css">
+</head>
+<body>
+    <header>
+        <h1>Carrinho de Compras</h1>
+        <button class="back-button" onclick="window.location.href='/products/client'">Voltar para Produtos</button>
+    </header>
+
+    <div class="container">
+        <div class="cart-header">
+            <h2>Seu Carrinho</h2>
+        </div>
+
+        <% if (cart.items.length === 0) { %>
+            <div class="empty-cart-message">
+                <p>O seu carrinho está vazio.</p>
+            </div>
+        <% } else { %>
+            <div class="cart-items">
+                <% cart.items.forEach(item => { %>
+                    <div class="cart-item">
+                        <img src="<%= item.product.imageUrl %>" alt="<%= item.product.name %>">
+                        <div class="cart-item-details">
+                            <h3><%= item.product.name %></h3>
+                            <p>Quantidade: <%= item.quantity %></p>
+                            <% if (item.product.price !== undefined && !isNaN(item.product.price)) { %>
+                                <p>Preço Unitário: R$ <%= parseFloat(item.product.price).toFixed(2) %></p>
+                                <p>Total: R$ <%= (item.quantity * parseFloat(item.product.price)).toFixed(2) %></p>
+                            <% } else { %>
+                                <p>Preço Unitário: Indisponível</p>
+                                <p>Total: Indisponível</p>
+                            <% } %>
+                        </div>
+                        <div class="cart-item-actions">
+                            <form action="/products/cart/remove/<%= item.product.id %>" method="POST" style="display:inline;">
+                                <button type="submit">Remover</button>
+                            </form>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+
+            <div class="cart-total">
+                <h3>Total do Carrinho: R$ <%= cart.getTotal().toFixed(2) %></h3>
+                <div class="cart-buttons">
+                    <button onclick="window.location.href='/products/checkout'">Finalizar Compra</button>
+                    <button onclick="window.location.href='/products/client'">Continuar Comprando</button>
+                </div>
+            </div>
+        <% } %>
+    </div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos</title>
+    <link rel="stylesheet" href="/css/layout.css">
+</head>
+<body>
+    <% layout('layout-cliente') %>
+
+    <section class="product-list">
+        <% products.forEach(product => { %>
+            <div class="product-card">
+                <img src="<%= product.imageUrl %>" alt="<%= product.name %>">
+                <h2><%= product.name %></h2>
+                <p>Descrição: <%= product.description %></p>
+                <p>Preço: R$<%= product.price %></p>
+                <form action="/products/cart/add/<%= product.id %>" method="POST">
+                    <label for="quantity">Quantidade:</label>
+                    <input type="number" name="quantity" id="quantity" min="1" max="<%= product.quantity %>" required>
+                    <button type="submit">Adicionar ao Carrinho</button>
+                </form>
+            </div>
+        <% }) %>
+    </section>
+</body>
+</html>

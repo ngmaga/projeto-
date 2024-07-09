@@ -1,0 +1,93 @@
+/* users.css */
+
+/* Estilos Globais */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9ff; /* Fundo lilás claro */
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #dcd6f7; /* Lilás claro */
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    color: #5a3ea6; /* Lilás escuro */
+}
+
+main {
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: #ffffff; /* Fundo branco para contraste */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #b1a3f7; /* Lilás mais escuro */
+    color: #fff;
+}
+
+tr:hover {
+    background-color: #f1f0ff; /* Lilás muito claro */
+}
+
+a.btn {
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    margin-right: 5px;
+}
+
+a.btn-primary {
+    background-color: #7b66ff; /* Botão lilás */
+    color: #fff;
+}
+
+a.btn-info {
+    background-color: #ab90ff; /* Botão lilás claro */
+    color: #fff;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    table {
+        width: 100%;
+    }
+    
+    th, td {
+        display: block;
+        width: 100%;
+    }
+    
+    th {
+        text-align: right;
+    }
+    
+    td {
+        text-align: left;
+        border-bottom: 1px solid #eee;
+    }
+    
+    td:before {
+        content: attr(data-label);
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-right: 10px;
+    }
+}

@@ -1,0 +1,151 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f8fc;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #4a69bd;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between; /* Alinha os itens espaçados */
+    align-items: center; /* Alinha verticalmente */
+}
+
+header .logo {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2em;
+    margin: 0 15px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 20px;
+}
+
+footer {
+    background-color: #4a69bd;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Product List Section */
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.product-card {
+    background-color: #fff;
+    border: 2px solid #c5cad1;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.product-card img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.product-card h2 {
+    color: #4a69bd;
+}
+
+.product-card p {
+    margin: 10px 0;
+}
+
+.product-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.product-card input[type="number"] {
+    border: 1px solid #c5cad1;
+    border-radius: 5px;
+    padding: 5px;
+    width: 60px;
+}
+
+.product-card button {
+    background-color: #6a89cc;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.product-card button:hover {
+    background-color: #4a69bd;
+}
+
+/* Cart Icon */
+a[href="/products/cart"] {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #6a89cc;
+    color: #fff;
+    padding: 10px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+a[href="/products/cart"]:hover {
+    background-color: #4a69bd;
+}
+
+a[href="/products/cart"] i {
+    font-size: 1.5em;
+}
+/* Imagem de Voltar */
+header .header-links a:first-child {
+    order: 1; /* Define a ordem do elemento no fluxo flex */
+    margin: left 0;/* Empurra para a esquerda */
+    left: -1600px;
+}
+
+header .header-links a:first-child img {
+    width: 20px; /* Define a largura da imagem */
+}
+
+/* Logo centralizada */
+header .logo {
+    flex: 1; /* Ocupa o espaço restante */
+    text-align: center; /* Centraliza o texto */
+}

@@ -1,0 +1,75 @@
+<!-- checkout.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="/css/checkout.css">
+    <script src="/js/checkout.js" defer></script>
+</head>
+<body>
+    <% layout('layout-cliente') %>
+
+    <section class="checkout">
+        <h2>Checkout</h2>
+        <h3>Total: R$<%= cart.getTotal() %></h3>
+        <form id="paymentForm" action="/products/checkout" method="POST">
+            <!-- Campos de Informações de Contato -->
+            <label for="name">Nome Completo:</label>
+            <input type="text" name="name" id="name" required><br>
+
+            <label for="address">Endereço:</label>
+            <input type="text" name="address" id="address" required><br>
+
+            <label for="cep">CEP:</label>
+            <input type="text" name="cep" id="cep" required><br>
+
+            <label for="houseNumber">Número da Casa:</label>
+            <input type="text" name="houseNumber" id="houseNumber" required><br>
+
+            <label for="complement">Complemento:</label>
+            <input type="text" name="complement" id="complement"><br>
+
+            <label for="phone">Telefone:</label>
+            <input type="text" name="phone" id="phone" required><br>
+
+            <!-- Seleção de Método de Pagamento -->
+            <label for="paymentMethod">Método de Pagamento:</label>
+            <select name="paymentMethod" id="paymentMethod" onchange="toggleCardFields()" required>
+                <option value="creditCard">Cartão de Crédito</option>
+                <option value="debitCard">Cartão de Débito</option>
+                <option value="pix">Pix</option>
+            </select>
+
+            <!-- Campos do Cartão de Crédito (exibido apenas se selecionado) -->
+            <div id="cardFields">
+                <label for="cardNumber">Número do Cartão:</label>
+                <input type="text" name="cardNumber" id="cardNumber"><br>
+
+                <label for="cardName">Nome no Cartão:</label>
+                <input type="text" name="cardName" id="cardName"><br>
+
+                <label for="cardExpiry">Validade (MM/AA):</label>
+                <input type="text" name="cardExpiry" id="cardExpiry"><br>
+
+                <label for="cardCVC">CVC:</label>
+                <input type="text" name="cardCVC" id="cardCVC"><br>
+            </div>
+
+            <!-- Informações do Pix (exibido apenas se selecionado) -->
+            <div id="pixFields">
+                <h3>Dados para pagamento com Pix</h3>
+                <p>Chave Pix: pix@example.com</p>
+                <p>Nome do destinatário: Empresa Exemplo</p>
+                <div class="qrcode-container">
+                    <img src="/img/fake-qrcode.png" alt="QR Code Pix" class="qrcode">
+                </div>
+            </div>
+
+     <button type="submit">Pagar</button>
+        </form>
+    </section>
+</body>
+</html>
